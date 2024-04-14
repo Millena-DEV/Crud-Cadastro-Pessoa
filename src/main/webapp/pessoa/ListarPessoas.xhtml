@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="titulo">Listagem de Pessoas/Alunos</ui:define>
+        <ui:define name="imagem">
+            <h:graphicImage library="imagens" name="alunos.png" >
+                <f:passThroughAttribute name="alt" value="Imagem do portal do aluno - alunos"/>
+            </h:graphicImage> 
+        </ui:define>
+        <ui:define name="tituloCabecalho">
+            Listagem de Pessoas/Alunos
+        </ui:define>
+        <ui:define name="corpo">
+            <f:view>
+                <h:form>
+                                       <h2> Dados Pessoais</h2>
+                    <h:dataTable id="listaAlunos" class="table table-striped table-bordered" value="#{pessoaBean.pessoas}" var="item">
+                    
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Matricula"/>
+                            </f:facet>
+                            <h:outputText value="#{item.matricula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sobrenome"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sobrenome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sexo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Curso"/>
+                            </f:facet>
+                            <h:outputText value="#{item.curso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="idade"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idade.time}">
+                                <f:convertDateTime type="both" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                            </h:outputText>
+                        </h:column>
+                        </h:dataTable>
+                        <h2> Endereço</h2>
+                         <h:dataTable id="listaenderecos" class="table table-striped table-bordered" value="#{enderecoBean.enderecos}" var="item2">
+                      <h:column>
+					        <f:facet name="header">
+					            <h:outputText value="Endereco"/>
+					        </f:facet>
+					        <h:outputText value="#{item2.estado}"/>
+					    </h:column>
+					    <h:column>
+					        <f:facet name="header">
+					            <h:outputText value="Cidade"/>
+					        </f:facet>
+					        <h:outputText value="#{item2.cidade}"/>
+					    </h:column>
+					    <h:column>
+					        <f:facet name="header">
+					            <h:outputText value="Logradouro"/>
+					        </f:facet>
+					        <h:outputText value="#{item2.logradouro}"/>
+					    </h:column>
+					    <h:column>
+					        <f:facet name="header">
+					            <h:outputText value="Cep"/>
+					        </f:facet>
+					        <h:outputText value="#{item2.cep}"/>
+					    </h:column>
+					    <h:column>
+					        <f:facet name="header">
+					            <h:outputText value="Número"/>
+					        </f:facet>
+					        <h:outputText value="#{item2.numero}"/>
+					    </h:column>
+					   <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ações"/>
+                            </f:facet>
+                            <h:commandLink type="reset" action="#{pessoaBean.excluir(item)}" title="Excluir Aluno">
+                                <img src="../resources/imagens/excluir.png" width="20px"/>                     
+                            </h:commandLink>
+                              
+                            <h:commandLink action="#{pessoaBean.alterar(item)}" title="Alterar Aluno">
+                                <img src="../resources/imagens/editar.png" width="20px"/>
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>
+

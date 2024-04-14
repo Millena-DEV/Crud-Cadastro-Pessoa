@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="titulo">Cadastro de Pessoas/Alunos</ui:define>
+        <ui:define name="imagem">
+            <h:graphicImage library="imagens" name="alunos.png" >
+                <f:passThroughAttribute name="alt" value="Imagem do portal do aluno - alunos"/>
+            </h:graphicImage> 
+        </ui:define>
+        <ui:define name="tituloCabecalho">
+            Cadastro de Pessoas/Alunos
+        </ui:define>
+        <ui:define name="corpo">
+            <h:form id="formulario">
+                <fieldset class="alert alert-info">
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Matricula:</h:outputLabel>
+                        <div class="col-xs-2">
+                            <h:inputText id="matricula" class="form-control" value="#{pessoaBean.pessoa.matricula}" required="true" requiredMessage="Preenchimento do campo &ldquo;Matricula&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Nome:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="nome" class="form-control" value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Preenchimento do campo &ldquo;Nome&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Sobrenome:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="sobrenome" class="form-control" value="#{pessoaBean.pessoa.sobrenome}" required="true" requiredMessage="Preenchimento do campo &ldquo;Sobrenome&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Sexo:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="sexo" class="form-control" value="#{pessoaBean.pessoa.sexo}" required="true" requiredMessage="Preenchimento do campo &ldquo;Sexo&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Data nascimento/Idade:</h:outputLabel>
+                        <div class="col-xs-2">
+                            <h:inputText id="idade" class="form-control" value="#{pessoaBean.pessoa.idade}" required="true" requiredMessage="Preenchimento do campo &ldquo;Data de Nascimento/Idade&rdquo; é obrigatório!!">                            
+                                <f:convertDateTime type="both" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                            </h:inputText>                   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Curso:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="curso" class="form-control" value="#{pessoaBean.pessoa.curso}" required="true" requiredMessage="Preenchimento do campo &ldquo;Curso&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Estado:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="estado" class="form-control" value="#{pessoaBean.endereco.estado}" required="true" requiredMessage="Preenchimento do campo &ldquo;Estado&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Cidade:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="cidade" class="form-control" value="#{pessoaBean.endereco.cidade}" required="true" requiredMessage="Preenchimento do campo &ldquo;Cidade&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Logradouro:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="logradouro" class="form-control" value="#{pessoaBean.endereco.logradouro}" required="true" requiredMessage="Preenchimento do campo &ldquo;Logradouro&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Cep:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="cep" class="form-control" value="#{pessoaBean.endereco.cep}" required="true" requiredMessage="Preenchimento do campo &ldquo;Cep&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                        <h:outputLabel class="col-xs-2">Número:</h:outputLabel>
+                        <div class="col-xs-8">
+                            <h:inputText id="numero" class="form-control" value="#{pessoaBean.endereco.numero}" required="true" requiredMessage="Preenchimento do campo &ldquo;Número&rdquo; é obrigatório!!"/>
+                        </div>
+                    </div>
+                  
+                  
+                </fieldset>
+                <div>                    
+                    <h:commandLink class="btn btn-info" action="#{pessoaBean.salva}" >
+                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Salvar
+             
+                    </h:commandLink>
+                </div>
+                <h:messages class="mensagens"/>                                  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
